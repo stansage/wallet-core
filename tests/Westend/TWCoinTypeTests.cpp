@@ -15,9 +15,9 @@
 
 TEST(TWWestendCoinType, TWCoinType) {
     auto symbol = WRAPS(TWCoinTypeConfigurationGetSymbol(TWCoinTypeWestend));
-    auto txId = WRAPS(TWStringCreateWithUTF8Bytes("0xcbe0c2e2851c1245bedaae4d52f06eaa6b4784b786bea2f0bff11af7715973dd"));
+    auto txId = WRAPS(TWStringCreateWithUTF8Bytes("0xb53b5362b18c7458737b8133ac80fa36b1b159ac74f6f5db43351bca036c25ab"));
     auto txUrl = WRAPS(TWCoinTypeConfigurationGetTransactionURL(TWCoinTypeWestend, txId.get()));
-    auto accId = WRAPS(TWStringCreateWithUTF8Bytes("DbCNECPna3k6MXFWWNZa5jGsuWycqEE6zcUxZYkxhVofrFk"));
+    auto accId = WRAPS(TWStringCreateWithUTF8Bytes("5Gb8qgpPJKd34to1oNiz2AqaLvhqSadpg24tHwCYFiu1Z27M"));
     auto accUrl = WRAPS(TWCoinTypeConfigurationGetAccountURL(TWCoinTypeWestend, accId.get()));
     auto id = WRAPS(TWCoinTypeConfigurationGetID(TWCoinTypeWestend));
     auto name = WRAPS(TWCoinTypeConfigurationGetName(TWCoinTypeWestend));
@@ -27,8 +27,8 @@ TEST(TWWestendCoinType, TWCoinType) {
     ASSERT_EQ(0x0, TWCoinTypeP2shPrefix(TWCoinTypeWestend));
     ASSERT_EQ(0x0, TWCoinTypeStaticPrefix(TWCoinTypeWestend));
     assertStringsEqual(symbol, "WND");
-    assertStringsEqual(txUrl, "https://westend.subscan.io/extrinsic/0xcbe0c2e2851c1245bedaae4d52f06eaa6b4784b786bea2f0bff11af7715973dd");
-    assertStringsEqual(accUrl, "https://westend.subscan.io/account/DbCNECPna3k6MXFWWNZa5jGsuWycqEE6zcUxZYkxhVofrFk");
+    assertStringsEqual(txUrl, "https://westend.subscan.io/extrinsic/0xb53b5362b18c7458737b8133ac80fa36b1b159ac74f6f5db43351bca036c25ab");
+    assertStringsEqual(accUrl, "https://westend.subscan.io/account/5Gb8qgpPJKd34to1oNiz2AqaLvhqSadpg24tHwCYFiu1Z27M");
     assertStringsEqual(id, "westend");
     assertStringsEqual(name, "Westend");
 }

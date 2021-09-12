@@ -17,7 +17,7 @@ using namespace TW::Polkadot;
 
 TEST(TWAnySignerWestend, Sign) {
     auto key = parse_hex("0x8cdc538e96f460da9d639afc5c226f477ce98684d77fb31e88db74c1f1dd86b2");
-    auto genesisHash = parse_hex("0xb0a8d493285c2df73290dfb7e61f870f17b41801197a149ca93654499ea3dafe");
+    auto genesisHash = parse_hex("0xe143f23803ac50e8f6f8e62695d1ce9e4e1d68aa36c1cd2cfd15340213f3423e");
 
     Proto::SigningInput input;
     input.set_block_hash(genesisHash.data(), genesisHash.size());
@@ -31,11 +31,11 @@ TEST(TWAnySignerWestend, Sign) {
     auto balanceCall = input.mutable_balance_call();
     auto &transfer = *balanceCall->mutable_transfer();
     auto value = store(uint256_t(10000000000));
-    transfer.set_to_address("CtwdfrhECFs3FpvCGoiE4hwRC4UsSiM8WL899HjRdQbfYZY");
+    transfer.set_to_address("5CPKyMWpbqEwHc1URZzfL7LwGbnF4muAg8VNkV1mwqC6vSTz");
     transfer.set_value(value.data(), value.size());
 
     Proto::SigningOutput output;
     ANY_SIGN(input, TWCoinTypeWestend);
 
-    ASSERT_EQ(hex(output.encoded()), "350284f41296779fd61a5bed6c2f506cc6c9ea93d6aeb357b9c69717193f434ba24ae700cd78b46eff36c433e642d7e9830805aab4f43eef70067ef32c8b2a294c510673a841c5f8a6e8900c03be40cfa475ae53e6f8aa61961563cb7cc0fa169ef9630d00040004000e33fdfb980e4499e5c3576e742a563b6a4fc0f6f598b1917fd7a6fe393ffc720700e40b5402");
+    ASSERT_EQ(hex(output.encoded()), "350284f41296779fd61a5bed6c2f506cc6c9ea93d6aeb357b9c69717193f434ba24ae7004221b8a8236eea1ae74d58c42d70e769c6b2a7cb9fe784bfb3beecfec128697b59cbb1f2126325974bfd31bddc759be0ec97782e403b9f59992152ec941abe0600040004000e33fdfb980e4499e5c3576e742a563b6a4fc0f6f598b1917fd7a6fe393ffc720700e40b5402");
 }

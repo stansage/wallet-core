@@ -20,19 +20,19 @@
 namespace TW::Polkadot {
     extern PrivateKey privateKey;
     extern PublicKey toPublicKey;
-    auto genesisHashKSM = parse_hex("b0a8d493285c2df73290dfb7e61f870f17b41801197a149ca93654499ea3dafe");
+    auto genesisHashWND = parse_hex("0xe143f23803ac50e8f6f8e62695d1ce9e4e1d68aa36c1cd2cfd15340213f3423e");
 
-TEST(PolkadotSigner, SignTransferKSM) {
+TEST(PolkadotSigner, SignTransferWND) {
     auto blockHash = parse_hex("4955dd4813f3e91ef3fd5a825b928af2fc50a71380085f753ccef00bb1582891");
-    auto toAddress = SS58Address(toPublicKey, TWSS58AddressTypeKusama);
+    auto toAddress = SS58Address(toPublicKey, TWSS58AddressTypeWestend);
 
     auto input = Proto::SigningInput();
     input.set_block_hash(blockHash.data(), blockHash.size());
-    input.set_genesis_hash(genesisHashKSM.data(), genesisHashKSM.size());
+    input.set_genesis_hash(genesisHashWND.data(), genesisHashWND.size());
     input.set_nonce(0);
     input.set_spec_version(2019);
     input.set_private_key(privateKey.bytes.data(), privateKey.bytes.size());
-    input.set_network(Proto::Network::KUSAMA);
+    input.set_network(Proto::Network::WESTEND);
     input.set_transaction_version(2);
 
     auto balanceCall = input.mutable_balance_call();
@@ -45,8 +45,8 @@ TEST(PolkadotSigner, SignTransferKSM) {
     auto preimage = extrinsic.encodePayload();
     auto output = Signer::sign(input);
 
-    ASSERT_EQ(hex(preimage), "04008eaf04151687736326c9fea17e25fc5287613693c912909cb226aa4794f26a48e5c0000000e307000002000000b0a8d493285c2df73290dfb7e61f870f17b41801197a149ca93654499ea3dafe4955dd4813f3e91ef3fd5a825b928af2fc50a71380085f753ccef00bb1582891");
-    ASSERT_EQ(hex(output.encoded()), "25028488dc3417d5058ec4b4503e0c12ea1a0a89be200fe98922423d4334014fa6b0ee000765cfa76cfe19499f4f19ef7dc4527652ec5b2e6b5ecfaf68725dafd48ae2694ad52e61f44152a544784e847de10ddb2c56bee4406574dcbcfdb5e5d35b6d0300000004008eaf04151687736326c9fea17e25fc5287613693c912909cb226aa4794f26a48e5c0");
+    ASSERT_EQ(hex(preimage), "04008eaf04151687736326c9fea17e25fc5287613693c912909cb226aa4794f26a48e5c0000000e307000002000000e143f23803ac50e8f6f8e62695d1ce9e4e1d68aa36c1cd2cfd15340213f3423e4955dd4813f3e91ef3fd5a825b928af2fc50a71380085f753ccef00bb1582891");
+    ASSERT_EQ(hex(output.encoded()), "25028488dc3417d5058ec4b4503e0c12ea1a0a89be200fe98922423d4334014fa6b0ee00eda3f60383419f4ab891bbc6d346f3246d1ab83f32d57b562b2e1eeb5bd9807b803be28a2d78708adb6a2d70c23ff5dabca69b92015edb202af81e39b2e53d0e00000004008eaf04151687736326c9fea17e25fc5287613693c912909cb226aa4794f26a48e5c0");
 }
 
 } // namespace

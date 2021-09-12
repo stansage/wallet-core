@@ -10,15 +10,17 @@ import XCTest
 class WestendTests: XCTestCase {
 
     func testAddressValidation() {
-        let kusama = CoinType.kusama
+        let westend = CoinType.westend
         // polkadot sr25519
         XCTAssertFalse(westend.validate(address: "14PhJGbzPxhQbiq7k9uFjDQx3MNiYxnjFRSiVBvBBBfnkAoM"))
         // cosmos
         XCTAssertFalse(westend.validate(address: "cosmos1l4f4max9w06gqrvsxf74hhyzuqhu2l3zyf0480"))
         // Bitcoin p2sh
         XCTAssertFalse(westend.validate(address: "3317oFJC9FvxU2fwrKVsvgnMGCDzTZ5nyf"))
+        // Kusama
+        XCTAssertFalse(polkadot.validate(address: "ELmaX1aPkyEF7TSmYbbyCjmSgrBpGHv9EtpwR2tk1kmpwvG"))
 
-        XCTAssertTrue(westend.validate(address: "ELmaX1aPkyEF7TSmYbbyCjmSgrBpGHv9EtpwR2tk1kmpwvG"))
+        XCTAssertFalse(polkadot.validate(address: "ELmaX1aPkyEF7TSmYbbyCjmSgrBpGHv9EtpwR2tk1kmpwvG"))
     }
 
     func testAddress() {

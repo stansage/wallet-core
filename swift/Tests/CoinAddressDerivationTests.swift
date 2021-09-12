@@ -138,6 +138,9 @@ class CoinAddressDerivationTests: XCTestCase {
                 case .kusama:
                     let expectedResult = "G9xV2EatmrjRC1FLPexc3ddqNRRzCsAdURU8RFiAAJX6ppY"
                     assertCoinDerivation(coin, expectedResult, derivedAddress, address)
+                case .westend:
+                    let expectedResult = "G9xV2EatmrjRC1FLPexc3ddqNRRzCsAdURU8RFiAAJX6ppY"
+                    assertCoinDerivation(coin, expectedResult, derivedAddress, address)
                 case .ontology:
                     let expectedResult = "AHKTnybvnWo3TeY8uvNXekvYxMrXogUjeT"
                     assertCoinDerivation(coin, expectedResult, derivedAddress, address)
