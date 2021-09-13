@@ -23,7 +23,7 @@ class TestWestendAddress {
         val key = PrivateKey("0x85fca134b3fe3fd523d8b528608d803890e26c93c86dc3d97b8d59c7b3540c97".toHexByteArray())
         val pubkey = key.publicKeyEd25519
         val address = AnyAddress(pubkey, CoinType.WESTEND)
-        val expected = AnyAddress("HewiDTQv92L2bVtkziZC8ASxrFUxr6ajQ62RXAnwQ8FDVmg", CoinType.WESTEND)
+        val expected = AnyAddress("5H9L3u7YHn1QGwgSzHuWJAoSpFyFABHQH2FH2rtqTbukURtY", CoinType.WESTEND)
 
         assertEquals(pubkey.data().toHex(), "0xe0b3fcccfe0283cc0f8c105c68b5690aab8c5c1692a868e55eaca836c8779085")
         assertEquals(address.description(), expected.description())

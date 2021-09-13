@@ -20,7 +20,7 @@
 namespace TW::Polkadot {
     extern PrivateKey privateKey;
     extern PublicKey toPublicKey;
-    auto genesisHashWND = parse_hex("0xe143f23803ac50e8f6f8e62695d1ce9e4e1d68aa36c1cd2cfd15340213f3423e");
+    auto genesisHashWND = parse_hex("e143f23803ac50e8f6f8e62695d1ce9e4e1d68aa36c1cd2cfd15340213f3423e");
 
 TEST(PolkadotSigner, SignTransferWND) {
     auto blockHash = parse_hex("4955dd4813f3e91ef3fd5a825b928af2fc50a71380085f753ccef00bb1582891");

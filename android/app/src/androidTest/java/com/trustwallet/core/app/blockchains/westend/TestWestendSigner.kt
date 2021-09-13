@@ -28,7 +28,7 @@ class TestWestendSigner {
         val hash = "0xb0a8d493285c2df73290dfb7e61f870f17b41801197a149ca93654499ea3dafe".toHexBytesInByteString()
 
         val call = Polkadot.Balance.Transfer.newBuilder().apply {
-            toAddress = "CtwdfrhECFs3FpvCGoiE4hwRC4UsSiM8WL899HjRdQbfYZY"
+            toAddress = "5CPKyMWpbqEwHc1URZzfL7LwGbnF4muAg8VNkV1mwqC6vSTz"
             value = "0x02540be400".toHexBytesInByteString()
         }
 
@@ -48,7 +48,7 @@ class TestWestendSigner {
         val output = AnySigner.sign(input.build(), WESTEND, SigningOutput.parser())
         val encoded = Numeric.toHexString(output.encoded.toByteArray())
 
-        val expected = "0x350284f41296779fd61a5bed6c2f506cc6c9ea93d6aeb357b9c69717193f434ba24ae700cd78b46eff36c433e642d7e9830805aab4f43eef70067ef32c8b2a294c510673a841c5f8a6e8900c03be40cfa475ae53e6f8aa61961563cb7cc0fa169ef9630d00040004000e33fdfb980e4499e5c3576e742a563b6a4fc0f6f598b1917fd7a6fe393ffc720700e40b5402"
+        val expected = "0x350284f41296779fd61a5bed6c2f506cc6c9ea93d6aeb357b9c69717193f434ba24ae7004221b8a8236eea1ae74d58c42d70e769c6b2a7cb9fe784bfb3beecfec128697b59cbb1f2126325974bfd31bddc759be0ec97782e403b9f59992152ec941abe0600040004000e33fdfb980e4499e5c3576e742a563b6a4fc0f6f598b1917fd7a6fe393ffc720700e40b5402"
         assertEquals(encoded, expected)
     }
 }
