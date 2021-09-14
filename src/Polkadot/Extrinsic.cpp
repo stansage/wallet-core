@@ -58,7 +58,7 @@ static std::map<const std::string, Data> westendCallIndices = {
     {stakingWithdrawUnbond, Data{0x06, 0x03}},
     {stakingNominate,       Data{0x06, 0x05}},
     {stakingChill,          Data{0x06, 0x06}},
-    {utilityBatch,          Data{0x18, 0x02}},
+    {utilityBatch,          Data{0x10, 0x02}},
 };
 
 static Data getCallIndex(TWSS58AddressType network, const std::string& key) {
